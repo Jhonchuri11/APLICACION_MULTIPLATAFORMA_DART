@@ -1,0 +1,6 @@
+// Para crear un nuevo proyecto dentro del directo de carpeta elegido
+
+-- Comando
+
+flutter create --platforms=android,ios <NombreApp>
+
