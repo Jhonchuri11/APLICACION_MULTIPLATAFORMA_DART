@@ -30,6 +30,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^1.0.0
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -63,6 +64,10 @@ flutter:
      - assets/images/juane.jpeg
      - assets/images/paz.jpg
      - assets/images/tigre.jpg
+     - assets/images/poll.jpeg
+     - assets/images/pollo.png
+     - assets/images/cat.svg
+     - assets/images/let.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -79,6 +84,9 @@ flutter:
      - family: PoetsenOne
        fonts:
          - asset: assets/fonts/PoetsenOne-Regular.ttf
+     - family: Italic
+       fonts:
+         - asset: assets/fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf
    #      - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro
