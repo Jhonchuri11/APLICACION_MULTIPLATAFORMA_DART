@@ -15,10 +15,34 @@ class Movie {
 }
 
 List<Movie> movies = [
-  Movie("IROMAN", "2023-01-12", "Acción", Image.network(""), "2:30"),
-  Movie("IROMAN", "2023-01-12", "Acción", Image.network(""), "2:30"),
-  Movie("IROMAN", "2023-01-12", "Acción", Image.network(""), "2:30"),
-  Movie("IROMAN", "2023-01-12", "Acción", Image.network(""), "2:30"),
+  Movie(
+      "Falcon y el soldado de Invierno",
+      "2021",
+      "Acción",
+      Image.network(
+          "https://hips.hearstapps.com/hmg-prod/images/falcon-soldado-invierno-fotogramas-1615229600.jpg?crop=1.00xw:0.452xh;0,0.0204xh&resize=980:*"),
+      "2:30"),
+  Movie(
+      "Deadpool 3",
+      "2024",
+      "Acción",
+      Image.network(
+          "https://hips.hearstapps.com/hmg-prod/images/deadpool-disparando-1549457850.jpg?resize=980:*"),
+      "2:20"),
+  Movie(
+      "Agatha: Dakhold Diaries",
+      "2024",
+      "Series",
+      Image.network(
+          "https://hips.hearstapps.com/hmg-prod/images/agatha-fotogramas-1636744094.jpeg?resize=980:*"),
+      "1:55"),
+  Movie(
+      "Daredevil: Born Again",
+      "2024",
+      "Serie",
+      Image.network(
+          "https://hips.hearstapps.com/hmg-prod/images/daredevil-fotogramas-1631051837.jpg?resize=980:*"),
+      "2:10"),
 ];
 
 class Myapp10 extends StatelessWidget {
@@ -33,14 +57,16 @@ class Myapp10 extends StatelessWidget {
         appBar: AppBar(
           title: const Text("CARTELERA MOVIE JWCA"),
         ),
-        body: const EventCardMovie(),
+        body: const Myhome(),
       ),
     );
   }
 }
 
 class EventCardMovie extends StatelessWidget {
-  const EventCardMovie({super.key});
+  final Movie movie;
+
+  const EventCardMovie({super.key, required this.movie});
 
   @override
   Widget build(BuildContext context) {
@@ -48,19 +74,32 @@ class EventCardMovie extends StatelessWidget {
       elevation: 5,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: Container(
-        width: 300,
-        height: 150,
-        padding: const EdgeInsets.all(16),
-        child: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Text(""),
-            SizedBox(
-              height: 10,
-            )
-          ],
-        ),
-      ),
+          width: 300,
+          height: 150,
+          padding: const EdgeInsets.all(16),
+          child: Row(
+            children: <Widget>[
+              movie.imagen,
+              const SizedBox(
+                width: 16,
+              ),
+              Expanded(
+                  child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    movie.title,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.bold, fontSize: 18),
+                  ),
+                  const SizedBox(height: 10),
+                  Text(movie.fecha),
+                  Text(movie.genero),
+                  Text(movie.duracion)
+                ],
+              ))
+            ],
+          )),
     );
   }
 }
@@ -73,9 +112,7 @@ class Myhome extends StatelessWidget {
     return ListView.builder(
       itemCount: movies.length,
       itemBuilder: (context, index) {
-        return Card(
-          child: Text(movies[index].title),
-        );
+        return EventCardMovie(movie: movies[index]);
       },
     );
   }
